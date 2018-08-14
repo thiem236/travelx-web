@@ -1,0 +1,13 @@
+%h1= "Hi #{@user.name}"
+%p
+  Your account has been made. To facilitate our user verification process, we will require you to enter the code to active your account:
+  %br
+  %span= @user.verification_code
+%p
+  Have a wonderful day!
+%p
+  Disclaimer: This is a system-generated email, please do not reply. If you receive a suspicious email with a link to update your account information, please contact us and do not click the link.
+%hr
+  Owner signing:
+  TravelX team.
+  Visit us: www.travelx-app.com

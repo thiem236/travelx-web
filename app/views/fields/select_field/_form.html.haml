@@ -1,0 +1,5 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__field
+  - puts field.data
+  = f.select(field.attribute, options_for_select(field.choices,field.data), { include_blank: true })

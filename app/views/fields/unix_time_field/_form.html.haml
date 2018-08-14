@@ -1,0 +1,4 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__field
+  = f.text_field field.attribute, class:  "datetimepicker", value: (Time.zone.at(field.data).strftime('%Y-%m-%d') rescue "")

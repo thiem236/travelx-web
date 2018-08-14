@@ -1,0 +1,9 @@
+%h1= "Hi #{@user.name}"
+%p
+  You recently requested to reset your password for your TravelX account. We will require you to enter the code below:
+  %br
+  %span= @user.verification_code
+%hr
+  Owner signing:
+  TravelX team.
+  Visit us: www.travelx-app.com

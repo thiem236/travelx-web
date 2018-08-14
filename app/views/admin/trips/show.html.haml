@@ -1,0 +1,45 @@
+%body
+  - content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" }
+  %header.main-content__header{:role => "banner"}
+    %h1.main-content__page-title
+      = content_for(:title)
+    %div.add-user
+      = select_tag "user_id", options_for_select(@friends),prompt: "Select User add to trip", class:"select-user"
+
+      %a.button#add-user-trip{data: {trip_id: page.resource.id}} Add User
+    = link_to( "#{t("administrate.actions.edit")} #{page.page_title}",[:edit, namespace, page.resource],class: "button") if valid_action? :edit
+  %div
+    %section.main-content__body
+      %dl
+        - page.attributes.each do |attribute|
+          %dt.attribute-label{:id => "#{attribute.name}"}
+            = t(                                                    |
+                "helpers.label.#{resource_name}.#{attribute.name}", |
+                default: attribute.name.titleize,                   |
+              )                                                     |
+          %dd{:class => "attribute-data attribute-data--#{attribute.html_class}"}= render_field attribute
+        %dt#line_items.attribute-label User in trip
+        %dd.attribute-data.attribute-data--has-many
+          %table#tb-user-trip
+            %thead
+              %tr
+                %th.cell-label.cell-label--belongs-to.cell-label--false{"aria-sort" => "none", :role => "columnheader", :scope => "col"}
+                  User Name
+                %th.cell-label.cell-label--belongs-to.cell-label--false{"aria-sort" => "none", :role => "columnheader", :scope => "col"}
+                  Status
+                %th.cell-label.cell-label--belongs-to.cell-label--false{"aria-sort" => "none", :role => "columnheader", :scope => "col"}
+                  Contact
+                %th{:scope => "col"}
+            %tbody
+              - @user_trips.each do |ut|
+                %tr.js-table-row{ :role => "link", :tabindex => "0"}
+                  %td.cell-data.cell-data--belongs-to
+                    %a.action-show{:href => admin_user_path(ut.user_id)}
+                      = ut.user.name
+                  %td.cell-data.cell-data--belongs-to
+                    = ut.status
+                  %td.cell-data.cell-data--belongs-to
+                    = ut.user.contact
+                  %td
+                    %a.text-color-red{"data-confirm" => "Are you sure remove user?", "data-method" => "delete", :href => remove_user_trip_admin_trip_path(page.resource,ut.user), rel: "nofollow"} Remove
+

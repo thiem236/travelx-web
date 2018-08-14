@@ -1,0 +1,27 @@
+%h1 Listing api_v1_trips
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Cover picture
+      %th Lat
+      %th
+      %th
+      %th
+
+  %tbody
+    - @api_v1_trips.each do |api_v1_trip|
+      %tr
+        %td= api_v1_trip.name
+        %td= api_v1_trip.description
+        %td= api_v1_trip.cover_picture
+        %td= api_v1_trip.lat
+        %td= link_to 'Show', api_v1_trip
+        %td= link_to 'Edit', edit_api_v1_trip_path(api_v1_trip)
+        %td= link_to 'Destroy', api_v1_trip, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Trip', new_api_v1_trip_path

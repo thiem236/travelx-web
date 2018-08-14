@@ -1,0 +1,22 @@
+= form_for @api_v1_trip do |f|
+  - if @api_v1_trip.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@api_v1_trip.errors.count, "error")} prohibited this api_v1_trip from being saved:"
+      %ul
+        - @api_v1_trip.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :cover_picture
+    = f.text_field :cover_picture
+  .field
+    = f.label :lat
+    = f.text_field :lat
+  .actions
+    = f.submit 'Save'

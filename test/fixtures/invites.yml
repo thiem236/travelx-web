@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact: MyString
+  invited_at: MyString
+  accept_invite_at: 
+  token: MyString
+  send_at: 1
+
+two:
+  contact: MyString
+  invited_at: MyString
+  accept_invite_at: 
+  token: MyString
+  send_at: 1

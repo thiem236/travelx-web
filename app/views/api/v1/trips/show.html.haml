@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @api_v1_trip.name
+%p
+  %b Description:
+  = @api_v1_trip.description
+%p
+  %b Cover picture:
+  = @api_v1_trip.cover_picture
+%p
+  %b Lat:
+  = @api_v1_trip.lat
+
+= link_to 'Edit', edit_api_v1_trip_path(@api_v1_trip)
+\|
+= link_to 'Back', api_v1_trips_path

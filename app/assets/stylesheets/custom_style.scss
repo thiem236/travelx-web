@@ -1,0 +1,30 @@
+// app/assets/stylesheets/application.scss
+
+.select-user{
+  width: 300px;
+  display: inline-block;
+}
+.add-user{
+  margin: 20px;
+}
+/*!
+ * Start Bootstrap - SB Admin 2 v3.3.7+1 (http://startbootstrap.com/template-overviews/sb-admin-2)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+.panel{
+  height: 139px;
+  float: left;
+  width: 260px;
+  margin: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel.green{
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #FFFFFF;
+}

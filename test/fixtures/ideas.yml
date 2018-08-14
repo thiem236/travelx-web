@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  pemark: 1
+  reference: 
+
+two:
+  name: MyString
+  type: 
+  pemark: 1
+  reference: 

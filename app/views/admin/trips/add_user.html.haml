@@ -1,0 +1,10 @@
+%tr.js-table-row{ :role => "link", :tabindex => "0"}
+  %td.cell-data.cell-data--belongs-to
+    %a.action-show{:href => admin_user_path(@ut.user_id)}
+      = @ut.user.name
+  %td.cell-data.cell-data--belongs-to
+    = @ut.status
+  %td.cell-data.cell-data--belongs-to
+    = @ut.user.contact
+  %td
+    %a.text-color-red{"data-confirm" => "Are you sure remove user?", "data-method" => "delete", :href => remove_user_trip_admin_trip_path(@trip,@ut.user), :rel => "nofollow"} Remove

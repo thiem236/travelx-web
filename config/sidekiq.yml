@@ -1,0 +1,13 @@
+---
+:concurrency: 5
+staging:
+  :concurrency: 15
+production:
+  :concurrency: 25
+:queues:
+  - default
+  - mailers
+  - textris
+dynamic: true
+:scheduler:
+  listened_queues_only: true
