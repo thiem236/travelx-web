@@ -1,0 +1,8 @@
+## YAML Template.
+RDS_DB_NAME: 'postgresql'
+RDS_USERNAME: ''
+RDS_PASSWORD: 'utomedia@236L'
+RDS_HOSTNAME: 'localhost'
+RDS_PORT: '5432'
+    
+ASSET_HOST: 'localhost'
