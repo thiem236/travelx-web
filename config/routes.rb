@@ -64,7 +64,9 @@ Rails.application.routes.draw do
             post :add_comment
           end
         end
-
+		
+        resources :todo_list, only: [:index, :create, :update, :destroy, :show]
+			
         resources :trips do
           # resources :posts
           resources :trip_images
