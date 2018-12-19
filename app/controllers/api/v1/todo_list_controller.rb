@@ -28,6 +28,16 @@ class Api::V1::TodoListController < Api::ApiController
     end
   end
   
+  def show_trip_id
+    begin
+      todo_list = TodoList.where(trip_id: params[:trip_id])
+      respond_without_location todo_list
+    rescue => e
+      Rails.logger.info(hash_exception(e))
+      respond_error "todo list not exist"
+    end
+  end
+  
   def show
     begin
       todo_list = TodoList.find_by(id: params[:id])
@@ -63,6 +73,6 @@ class Api::V1::TodoListController < Api::ApiController
   
   private
   def todo_params
-    params.permit(:trip_id, :todo, :lat, :long, :is_delete, :status, :create_date)
+    params.permit(:trip_id, :todo, :lat, :long, :is_delete, :status, :create_date, :form_date, :to_date)
   end
 end
