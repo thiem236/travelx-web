@@ -20,9 +20,9 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 #documentation
-
-# gem 'swagger-blocks'
 gem 'swagger-docs'
+# gem 'swagger-blocks'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,7 +52,7 @@ gem 'refile', github: 'refile/refile', require: 'refile/rails'
 gem 'refile-mini_magick', github: 'refile/refile-mini_magick'
 gem "refile-s3"
 gem 'bootstrap-sass'
-gem 'factory_bot'
+gem 'factory_girl'
 gem 'versionist'
 gem "haml-rails", "~> 1.0"
 gem 'geocoder'
@@ -75,6 +75,7 @@ gem 'has_friendship'
 gem 'numbers_in_words'
 gem 'rotp'
 gem 'storext'
+gem 'countries'
 gem 'city-state'
 gem 'telephone_number'
 gem 'kaminari'
@@ -105,4 +106,4 @@ gem 'administrate-field-json', github: 'eddietejeda/administrate-field-json', br
 
 gem 'twilio-ruby'
 gem 'textris'
-gem 'wdm', '~> 0.1.1'
+
