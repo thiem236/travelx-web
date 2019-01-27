@@ -13,6 +13,7 @@ module Admin
 
     def show
       @user_trips = requested_resource.user_trips.includes(:user)
+      puts "here"
       @friends = requested_resource.user.friends.pluck(:name, :id)
       super
     end
