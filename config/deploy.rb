@@ -1,5 +1,5 @@
 ENV.update YAML.load_file(File.join(File.dirname(__FILE__), 'config.yml'))
-lock "~> 3.11.0"
+lock "3.11.0"
 set :stages, %w(production staging)
 
 set :nginx_config,    ENV['TRAVELX_NGINX_CONFIG']

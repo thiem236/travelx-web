@@ -89,7 +89,7 @@ end
 
 group :development do
   ## Capistrano
-  gem 'capistrano', '3.9.0'
+  gem 'capistrano', '~> 3.11.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rails-collection'

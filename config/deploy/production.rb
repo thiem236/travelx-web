@@ -1,4 +1,4 @@
-server ENV['TRAVELX_STAGING_SERVER'], port: 22, roles: [:web, :app, :db], primary: true
+server ENV['TRAVELX_PRODUCTION_SERVER'], port: 22, roles: [:web, :app, :db], primary: true
 
 set :user, ENV['TRAVELX_USER_DEPLOY']
 
