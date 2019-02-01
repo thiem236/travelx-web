@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 redis_conn = proc {
-  Redis.new(url: "#{ENV["REDIS_URL"]}/12")
+  Redis.new(url: ENV["REDIS_URL"])
 }
 Sidekiq.configure_client do |config|
   config.redis = ConnectionPool.new(size: 5, &redis_conn)
