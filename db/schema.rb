@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20181219153058) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "country"
+    t.string "city"
     t.integer "trip_id"
     t.decimal "lat"
     t.decimal "long"
@@ -275,6 +276,7 @@ ActiveRecord::Schema.define(version: 20181219153058) do
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "country"
+    t.string "city"
     t.string "image"
     t.string "email"
     t.string "fb_id"

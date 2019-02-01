@@ -22,6 +22,7 @@ class Api::V1::UsersController < Api::ApiController
     param :form, 'allow_notification', :boolean, :optional, 'allow_notification'
     param :form, 'allow_tag_me', :boolean, :optional, 'allow_tag_me'
     param :form, 'receive_message', :boolean, :require, 'recive_message'
+    param :form, 'city', :string, :optional, 'city'
     response :unauthorized
     response :not_acceptable
     response :unprocessable_entity
