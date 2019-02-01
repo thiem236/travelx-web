@@ -554,7 +554,7 @@ DEPENDENCIES
   pundit
   rack-cors
   rails (~> 5.1.1)
-  redis (~> 3.0)
+  redis
   refile!
   refile-mini_magick!
   refile-s3
