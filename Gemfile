@@ -16,13 +16,13 @@ gem 'pg', '~> 0.18'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+gem 'redis'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 #documentation
 gem 'swagger-docs'
 # gem 'swagger-blocks'
-gem 'redis', '~> 3.0'
+# gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -75,7 +75,6 @@ gem 'has_friendship'
 gem 'numbers_in_words'
 gem 'rotp'
 gem 'storext'
-gem 'countries'
 gem 'city-state'
 gem 'telephone_number'
 gem 'kaminari'
@@ -89,6 +88,14 @@ group :development, :test do
 end
 
 group :development do
+  ## Capistrano
+  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-collection'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
