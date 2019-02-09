@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181219153058) do
+ActiveRecord::Schema.define(version: 20190209151737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20181219153058) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "country"
-    t.string "city"
     t.integer "trip_id"
     t.decimal "lat"
     t.decimal "long"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 20181219153058) do
     t.bigint "end_date"
     t.integer "user_id"
     t.integer "like", default: [], array: true
+    t.string "city"
     t.index ["trip_id", "country", "name"], name: "index_cities_on_trip_id_and_country_and_name", unique: true
   end
 
@@ -276,7 +276,6 @@ ActiveRecord::Schema.define(version: 20181219153058) do
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "country"
-    t.string "city"
     t.string "image"
     t.string "email"
     t.string "fb_id"
@@ -298,6 +297,7 @@ ActiveRecord::Schema.define(version: 20181219153058) do
     t.integer "cover_picture_size"
     t.integer "push_badge", default: 1
     t.string "auth_token"
+    t.string "city"
     t.index ["device_tokens"], name: "index_users_on_device_tokens", using: :gin
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true

@@ -263,6 +263,7 @@ class Api::V1::UsersController < Api::ApiController
                   :allow_notification,
                   :allow_tag_me,
                   :receive_message,
-                  :fb_id)
+                  :fb_id,
+                  :city)
   end
 end
