@@ -193,7 +193,8 @@ class Api::V1::TripsController < Api::ApiController
       @trip = trip_service.create_new_trip(params)
       respond_without_location  TripSerializer.new(@trip), :created
     rescue => e
-      Rails.logger.info(hash_exception(e))
+      p e
+      # Rails.logger.info(hash_exception(e))
       respond_error "Can't create trip"
     end
   end

@@ -30,7 +30,7 @@ module TravelApp
       conf_file = File.join(Rails.root, 'config', 'config.yml')
       YAML.load(File.open(conf_file)).each do |key, value|
         ENV[key.to_s] = value
-      end if File.exists?(conf_file)
+      end if File.exists?(conf_file) && Rails.env.production?
     end
     
 
@@ -47,7 +47,7 @@ module TravelApp
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies # Required for all session management
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
-    config.asset_host = ENV['ASSET_HOST']  
+    config.asset_host = ENV['ASSET_HOST']
    
         
     config.action_mailer.asset_host = config.asset_host
