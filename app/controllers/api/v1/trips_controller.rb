@@ -180,7 +180,7 @@ class Api::V1::TripsController < Api::ApiController
     param :form, :start_date, :integer, :require, "Unit time"
     param :form, :end_date, :integer, :require, "Unit time"
     param :form, :cover_picture, :file, :require, "File"
-    param :form, :trip_schedule, :string, :optional, 'List Country Code "VN,US"'
+    param_list :form, :trip_schedule, :json, :optional, 'List Country Code "VN,US"'
     param :form, :user_in_strip_ids, :string, :optional, "User ID list  1,3,4 "
     response :unauthorized
     response :not_acceptable

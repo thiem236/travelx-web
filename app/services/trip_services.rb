@@ -47,17 +47,18 @@ class TripServices
   def get_trip_schedules(trip,params)
     old_schedule = trip.trip_schedule
     trip_schedules = []
-    params[:trip_schedule].each_with_index do |country,index|
-      country_detail = old_schedule.select {|c| c['country'] == country.upcase}
+    params[:trip_schedule].each_with_index do |trip,index|
+      country_detail = old_schedule.select {|c| c['country'] == trip[:country]&.upcase}
       if country_detail.present?
         trip_schedules << country_detail.first
       else
-        country_date = ISO3166::Country.find_country_by_alpha2(country)
+        country_date = ISO3166::Country.find_country_by_alpha2(trip[:country])
         if country_date.present?
           trip_schedules << {
-              country: country,
-              start_date: params[:start_date].to_i,
-              end_date: params[:end_date].to_i,
+              country: trip[:country],
+              city: trip[:city],
+              start_date: params[:start_date].to_time.to_i,
+              end_date: params[:end_date].to_time.to_i,
               days: 0,
               lat: country_date.latitude_dec,
               long: country_date.longitude_dec
@@ -69,7 +70,7 @@ class TripServices
   end
 
   def permit_trip_params(params)
-    if params[:trip_schedule].is_a?String
+    if params[:trip_schedule].is_a? Array
       params[:trip_schedule] = map_params_country(params)
     end
     if params[:user_in_strip_ids].is_a?String
@@ -82,7 +83,7 @@ class TripServices
               :start_date,
               :end_date,
                   {user_in_strip_ids: []},
-              trip_schedule:  [:country, :start_date, :end_date, :days, :lat, :long],
+              trip_schedule:  [:country, :city, :start_date, :end_date, :days, :lat, :long],
     )
   end
 
@@ -95,20 +96,22 @@ class TripServices
 
 
   def map_params_country(params)
-    params[:trip_schedule].split(",").map do |code|
-      country = ISO3166::Country.find_country_by_alpha2(code)
+    params[:trip_schedule].map do |trip|
+      country = ISO3166::Country.find_country_by_alpha2(trip[:country])
       if country.present?
         {
-            country: code,
-            start_date: params[:start_date].to_i,
-            end_date: params[:end_date].to_i,
+            country: trip[:country],
+            city: trip[:city],
+            start_date: params[:start_date].to_time.to_i,
+            end_date: params[:end_date].to_time.to_i,
             days: 0,
             lat: country.latitude_dec,
             long: country.longitude_dec
         }
       else
         {
-            country: code,
+            country: trip[:country],
+            city: trip[:city],
             start_date: 0,
             end_date: 0,
             days: 0,
