@@ -57,8 +57,8 @@ class TripServices
           trip_schedules << {
               country: trip[:country],
               city: trip[:city],
-              start_date: params[:start_date].to_time.to_i,
-              end_date: params[:end_date].to_time.to_i,
+              start_date: params[:start_date].to_i,
+              end_date: params[:end_date].to_i,
               days: 0,
               lat: country_date.latitude_dec,
               long: country_date.longitude_dec
@@ -102,8 +102,8 @@ class TripServices
         {
             country: trip[:country],
             city: trip[:city],
-            start_date: params[:start_date].to_time.to_i,
-            end_date: params[:end_date].to_time.to_i,
+            start_date: params[:start_date].to_i,
+            end_date: params[:end_date].to_i,
             days: 0,
             lat: country.latitude_dec,
             long: country.longitude_dec
