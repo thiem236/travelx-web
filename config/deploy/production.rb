@@ -5,8 +5,9 @@ set :user, ENV['TRAVELX_USER_DEPLOY']
 set :ssh_options,     {
     forward_agent: true,
     user: fetch(:user),
-    keys: [ENV['TRAVELX_PRODUCTION_KEY']],
-    auth_methods: %w(publickey)
+    # keys: [ENV['TRAVELX_PRODUCTION_KEY']],
+    # auth_methods: %w(publickey)
+    auth_methods: %w(password)
 }
 
 set :puma_threads, [4, 16]
