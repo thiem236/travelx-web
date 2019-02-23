@@ -83,12 +83,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-      :user_name => ENV['SMTP_USERNAME'],
-      :password => ENV['SMTP_PASSWORD'],
-      :address => 'email-smtp.us-east-1.amazonaws.com',
+      :user_name => 'apikey',
+      :password => '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',
+      :address => 'smtp.sendgrid.net',
       :domain => 'travelx-app.com',
       :port => '587',
-      :authentication => :login,
+      # :authentication => :login,
       :enable_starttls_auto => true
   }
   config.textris_delivery_method = :twilio
