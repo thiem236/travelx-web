@@ -71,24 +71,24 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.site_url = "https://travel-dev.herokuapp.com/"
+  config.site_url = ENV['SITE_URL']
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-  config.action_mailer.default_url_options = { host:  'https://travelx-app.com' }
+  config.action_mailer.default_url_options = { host:  ENV['SITE_URL'] }
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-      :user_name => 'apikey',
-      :password => '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',
-      :address => 'smtp.sendgrid.net',
-      :domain => 'travelx-app.com',
-      :port => '587',
-      # :authentication => :login,
+      :address => "smtp.sendgrid.net",
+      :port => 25,
+      :domain => ENV['SITE_URL'],
+      :authentication => :plain,
+      :user_name => ENV['SMTP_USERNAME'],
+      :password =>  ENV['SMTP_PASSWORD'],
       :enable_starttls_auto => true
   }
   config.textris_delivery_method = :twilio

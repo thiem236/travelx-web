@@ -58,8 +58,8 @@ Rails.application.configure do
       :port => 25,
       :domain => "localhost:3000",
       :authentication => :plain,
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password =>  ENV['SENDGRID_PASSWORD'],
+      :user_name => ENV['SMTP_USERNAME'],
+      :password =>  ENV['SMTP_PASSWORD'],
       :enable_starttls_auto => true
   }
 end
