@@ -97,7 +97,11 @@ class TripServices
 
   def map_params_country(params)
     params[:trip_schedule].map do |trip|
-      country = ISO3166::Country.find_country_by_alpha2(trip[:country])
+      if trip[:long]
+        country = ISO3166::Country.find_country_by_latitude_dec(trip[:long])
+      else
+        country = ISO3166::Country.find_country_by_alpha2(trip[:country]) if trip[:country]
+      end
       if country.present?
         {
             country: trip[:country],
