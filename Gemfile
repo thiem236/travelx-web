@@ -58,6 +58,7 @@ gem "haml-rails", "~> 1.0"
 gem 'geocoder'
 gem 'phone'
 gem 'countries', :require => 'countries/global'
+gem 'geocoder'
 # gem 'restcountry'
 gem "jsonb_accessor", "~> 1.0.0"
 gem 'active_record_upsert'
