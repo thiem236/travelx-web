@@ -103,22 +103,16 @@ class TripServices
 
   def map_params_country(params)
     params[:trip_schedule].map do |trip|
-      country = if trip[:lat] && trip[:long]
-                  Geocoder.search("#{trip[:lat]},#{trip[:long]}").first
-                else
-                  Geocoder.search("#{trip[:city]},#{trip[:country]}").first
-                end
+      country = ISO3166::Country.find_country_by_alpha2(trip[:country])
       if country.present?
-        city = trip[:city] ? trip[:city] : (country.city || 'unknown')
         {
-          country_name: country.country,
-          country: country.country_code.upcase,
-          city: city,
+          country: trip[:country],
+          city: trip[:city],
           start_date: params[:start_date].to_i,
           end_date: params[:end_date].to_i,
           days: 0,
-          lat: country.latitude,
-          long: country.longitude
+          lat: country.latitude_dec,
+          long: country.longitude_dec
         }
       else
         {
