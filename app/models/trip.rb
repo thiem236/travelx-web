@@ -16,7 +16,7 @@ class Trip < ApplicationRecord
   validates :end_date, presence: true
   validates :start_date, presence: true
 
-  before_save :set_country_code
+  before_create :set_country_code
   before_save :check_schedule_when_update
   before_destroy :delete_noti
 
