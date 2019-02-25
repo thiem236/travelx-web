@@ -16,7 +16,7 @@ class Trip < ApplicationRecord
   validates :end_date, presence: true
   validates :start_date, presence: true
 
-  before_save :set_country_code
+  # before_save :set_country_code
   before_save :check_schedule_when_update
   before_destroy :delete_noti
 
@@ -33,23 +33,23 @@ class Trip < ApplicationRecord
     end
   end
 
-  def set_country_code
-    trip_schedule.compact.each do |s|
-      country = ISO3166::Country.find_country_by_alpha2(s["country"].strip) rescue nil
-      if country.present?
-        s["country_name"] = TZInfo::Country.get(s["country"].strip).name
-        s["lat"] =  country.latitude_dec
-        s["long"] =  country.longitude_dec
-      else
-        s["country_name"] = 'Unknown'
-        s["country"] = 'Unknown'
-        s["lat"] =  0.0
-        s["long"] =   0.0
-      end
-
-    end
-
-  end
+  # def set_country_code
+  #   trip_schedule.compact.each do |s|
+  #     country = ISO3166::Country.find_country_by_alpha2(s["country"].strip) rescue nil
+  #     if country.present?
+  #       s["country_name"] = TZInfo::Country.get(s["country"].strip).name
+  #       s["lat"] =  country.latitude_dec
+  #       s["long"] =  country.longitude_dec
+  #     else
+  #       s["country_name"] = 'Unknown'
+  #       s["country"] = 'Unknown'
+  #       s["lat"] =  0.0
+  #       s["long"] =   0.0
+  #     end
+  #
+  #   end
+  #
+  # end
 
   def check_schedule_when_update
     if trip_schedule_changed? && !new_record?
