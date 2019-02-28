@@ -62,8 +62,8 @@ class Api::V1::TodoListController < Api::ApiController
   
   def destroy
     begin
-      @trip = TodoList.find(params[:id])
-      @trip.destroy
+      @todo = TodoList.find(params[:id])
+      @todo.destroy
       respond_success("success")
     rescue => e
       Rails.logger.info(hash_exception(e))
@@ -73,6 +73,6 @@ class Api::V1::TodoListController < Api::ApiController
   
   private
   def todo_params
-    params.permit(:trip_id, :todo, :lat, :long, :is_delete, :status, :create_date, :form_date, :to_date)
+    params.permit(:trip_id, :todo, :lat, :long, :is_delete, :status, :create_date, :from_date, :to_date)
   end
 end

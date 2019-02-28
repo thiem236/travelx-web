@@ -83,6 +83,11 @@ Rails.application.routes.draw do
             put :accepted_trip
             put :invite_trip
           end
+          resources :todo_list do
+            collection do
+              get :show_trip_id
+            end
+          end
         end
         resources :notifications do
           collection do
