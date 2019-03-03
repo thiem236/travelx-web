@@ -7,7 +7,7 @@ class Api::V1::TodoListController < Api::ApiController
     begin
       page = params[:page] || 1
       per_page = params[:per_page] || 5
-      @todo_list = TodoList.where(status: 'accepted')
+      @todo_list = TodoList.all
       @todo_list = @todo_list.page(page).per(per_page)
       respond_without_location({result: @todo_list, total_count: @todo_list.total_count, page: @todo_list.current_page, last_page: @todo_list.last_page?})
     rescue => e
@@ -57,6 +57,21 @@ class Api::V1::TodoListController < Api::ApiController
       Rails.logger.info(e.message)
       Rails.logger.info(e.backtrace.join("\n"))
       respond_error "Can't upload todo list"
+    end
+  end
+
+  def update_status
+    begin
+      todo_list = TodoList.find(params[:id])
+      todo_list.update(status: params[:status])
+      render json: {
+          data: todo_list,
+          success: true
+      }, status: 201
+    rescue => e
+      Rails.logger.info(e.message)
+      Rails.logger.info(e.backtrace.join("\n"))
+      respond_error "Can't change status of this todo list"
     end
   end
   
