@@ -87,6 +87,9 @@ Rails.application.routes.draw do
             collection do
               get :show_trip_id
             end
+            member do
+              patch :update_status
+            end
           end
         end
         resources :notifications do
