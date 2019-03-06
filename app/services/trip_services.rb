@@ -58,7 +58,7 @@ class TripServices
                     Geocoder.search("#{trip[:city]},#{trip[:country]}").first
                   end
         if country.present?
-          city = trip[:city] ? trip[:city] : (country.city || 'unknown')
+          city = trip[:city].present? ? trip[:city] : (country.city || 'unknown')
           trip_schedules << {
               country_name: country.country,
               country: country.country_code.upcase,
