@@ -1,5 +1,5 @@
 class TripSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :trip_schedule, :created_by, :start_date, :end_date, :created_at
+  attributes :id, :name, :description, :link_share, :trip_schedule, :created_by, :start_date, :end_date, :created_at
   belongs_to :user, if: :show_belong?
   attribute :last_picture, if: :show_last_image?
   attribute :user_join_trip, if: :show_user_join_trip?

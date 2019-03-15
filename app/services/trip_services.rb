@@ -9,6 +9,7 @@ class TripServices
     trip = Trip.new(trip_params.merge(created_by: @current_user.id))
     ActiveRecord::Base.transaction do
       trip.save!
+      trip.update_attributes!(link_share: "#{ENV["SITE_URL"]}/#{trip.id}")
       User.where(id: params[:user_in_strip_ids]).each do |user|
         user.send_notification_invite_trip(trip, @current_user)
       end
