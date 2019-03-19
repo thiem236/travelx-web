@@ -81,9 +81,14 @@ namespace :deploy do
   #     execute "sudo service nginx restart"
   #   end
   # end
+  task :reindex_search do
+    on roles(:all) do
+      execute "bundle exec rake searchkick:reindex CLASS=User "
+    end
+  end
 
   before 'deploy:check:linked_files', :copy
-  # after  :finishing, :nginx
+  after  :finishing, :reindex_search
   after  :finishing, :cleanup
   after  :finishing, :restart
 end

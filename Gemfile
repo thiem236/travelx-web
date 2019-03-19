@@ -26,6 +26,9 @@ gem 'swagger-docs'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Add gem for search
+gem 'searchkick'
+
 # background jobs
 gem 'sidekiq'
 gem 'sidekiq-scheduler'

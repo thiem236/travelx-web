@@ -40,7 +40,7 @@ Rails.application.routes.draw do
         devise_scope :user do
           post 'passwords/check_code', to: 'passwords#check_code'
         end
-        resources :users, only: [:show] do
+        resources :users, only: [:index, :show] do
           collection do
             patch :update_profile
             post :verify_register
