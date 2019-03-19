@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_friendship
+  searchkick
   # Include default devise modules.
   devise :invitable, :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :facebook]

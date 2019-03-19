@@ -3,7 +3,9 @@ class Api::V1::UsersController < Api::ApiController
   swagger_controller :UsersController, "UsersController"
 
   def index
-
+    @users = User.search(params[:q], misspellings: {edit_distance: 3})
+    @users = @users.length > 0 ? @users : {users: []}
+    render json: @users
   end
 
   swagger_api :update_profile do |api|
