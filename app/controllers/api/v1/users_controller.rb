@@ -167,6 +167,15 @@ class Api::V1::UsersController < Api::ApiController
 
   end
 
+  def add_friend
+    user = User.find_by_id(params[:user_id])
+    if current_user.friend_request(user)
+      respond_success("Request sent success")
+    else
+      respond_error("Cannot Not add friend")
+    end
+  end
+
   swagger_api :update_device_token do
     summary "Update user token "
     Api::ApiController.add_common_params(self)
