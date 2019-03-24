@@ -16,6 +16,12 @@ class UserSerializer < ActiveModel::Serializer
              :cover_picture,
              :city
 
+  attribute :is_friend do
+    if @instance_options[:user_id]
+      Friendship.find_by(friendable_id: @instance_options[:user_id], friend_id: object.id) ? true : false
+    end
+  end
+
   def profile_picture
     Refile.attachment_url(object, :profile_picture )
   end
@@ -27,4 +33,5 @@ class UserSerializer < ActiveModel::Serializer
   def email
     object.email
   end
+
 end

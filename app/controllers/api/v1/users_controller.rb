@@ -3,9 +3,13 @@ class Api::V1::UsersController < Api::ApiController
   swagger_controller :UsersController, "UsersController"
 
   def index
-    @users = User.search(params[:q], misspellings: {edit_distance: 3})
+    if params[:q]
+      @users = User.search(params[:q],where: {id: {not: current_user.id}}, misspellings: {edit_distance: 5})
+    else
+      @users = User.where.not(id: current_user.id)
+    end
     @users = @users.length > 0 ? @users : {users: []}
-    render json: @users
+    render json: @users, user_id: current_user.id
   end
 
   swagger_api :update_profile do |api|
@@ -90,7 +94,7 @@ class Api::V1::UsersController < Api::ApiController
   end
   def resend_verification_code
     current_user.generate_verification_code_and_send
-    render json: @user, status: :ok
+    render json: @user, user_id: current_user.id, status: :ok
   end
 
   swagger_api :accept_trip do
@@ -129,7 +133,7 @@ class Api::V1::UsersController < Api::ApiController
   end
   def friend_list
     users = current_user.friends
-    respond_without_location(users.map{|u| UserSerializer.new(u)})
+    respond_without_location(users.map{|u| UserSerializer.new(u, user_id: current_user.id)})
   end
 
   swagger_api :get_user_by_contact do
