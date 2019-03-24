@@ -18,7 +18,7 @@ class UserSerializer < ActiveModel::Serializer
 
   attribute :is_friend do
     if @instance_options[:user_id]
-      Friendship.find_by(friendable_id: @instance_options[:user_id], friend_id: object.id) ? true : false
+      Friendship.find_by(friendable_id: @instance_options[:user_id], friend_id: object.id, status: 2) ? true : false
     end
   end
 
