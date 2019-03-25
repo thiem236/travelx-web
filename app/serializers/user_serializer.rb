@@ -16,9 +16,14 @@ class UserSerializer < ActiveModel::Serializer
              :cover_picture,
              :city
 
-  attribute :is_friend do
+  attribute :friend do
     if @instance_options[:user_id]
-      Friendship.find_by(friendable_id: @instance_options[:user_id], friend_id: object.id, status: 2) ? true : false
+      friendship = Friendship.find_by(friendable_id: @instance_options[:user_id], friend_id: object.id)
+      if friendship
+        friendship.status
+      else
+        nil
+      end
     end
   end
 
