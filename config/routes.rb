@@ -45,6 +45,7 @@ Rails.application.routes.draw do
             patch :update_profile
             post :verify_register
             post :add_friend
+            post :cancel_request
             post :accept_friend
             delete :ignore_friend
             get :trip_list

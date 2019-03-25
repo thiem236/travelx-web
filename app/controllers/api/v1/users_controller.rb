@@ -180,6 +180,22 @@ class Api::V1::UsersController < Api::ApiController
     end
   end
 
+  def cancel_request
+    if params[:user_id]
+      User.transaction do
+        if Friendship.where(friendable_id: current_user.id, friend_id: params[:user_id], status: 0)
+            .or(Friendship.where(friendable_id: params[:user_id], friend_id: current_user.id, status: 1))
+            .destroy_all
+          respond_success("Cancel request success")
+        else
+          respond_error("Cancel request error")
+        end
+      end
+    else
+      respond_error("Please provide id of user")
+    end
+  end
+
   swagger_api :update_device_token do
     summary "Update user token "
     Api::ApiController.add_common_params(self)
