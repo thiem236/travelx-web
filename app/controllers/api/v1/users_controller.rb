@@ -275,8 +275,8 @@ class Api::V1::UsersController < Api::ApiController
   def accept_friend
     @friend = User.find_by(id: params[:user_id])
     current_user.accept_request(@friend)
-    noti = NotificationServices.new(@friend,current_user,nil)
-    noti.send_noti_add_friend('accepted_friend')
+    # noti = NotificationServices.new(@friend,current_user,nil)
+    # noti.send_noti_add_friend('accepted_friend')
     respond_success("ok")
   end
 
