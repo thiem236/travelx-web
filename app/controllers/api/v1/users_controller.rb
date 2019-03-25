@@ -4,7 +4,7 @@ class Api::V1::UsersController < Api::ApiController
 
   def index
     if params[:q]
-      @users = User.search(params[:q],where: {id: {not: current_user.id}}, misspellings: {edit_distance: 5})
+      @users = User.search(and: [{query: params[:q]}, {not: {id: current_user.id}}])
     else
       @users = User.where.not(id: current_user.id)
     end

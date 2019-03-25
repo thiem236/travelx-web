@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190209151737) do
+ActiveRecord::Schema.define(version: 20190315083245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,10 +213,10 @@ ActiveRecord::Schema.define(version: 20190209151737) do
     t.decimal "long", precision: 10, scale: 6
     t.date "create_date"
     t.integer "is_delete"
-    t.string "status"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "form_date"
+    t.date "from_date"
     t.date "to_date"
   end
 
@@ -236,6 +236,7 @@ ActiveRecord::Schema.define(version: 20190209151737) do
     t.datetime "updated_at", null: false
     t.integer "total_like"
     t.integer "total_comment"
+    t.string "link_share"
     t.index ["trip_schedule"], name: "index_trips_on_trip_schedule", using: :gin
   end
 

@@ -27,7 +27,7 @@ gem 'swagger-docs'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Add gem for search
-gem 'searchkick'
+gem 'search_cop'
 
 # background jobs
 gem 'sidekiq'
