@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root :to => 'home#index'
   get 'home/index',:to => 'home#index'
   devise_for :admin_users
-  get '/apple-app-site-association', :to => "home#apple_app_site"
+  get '/.well-know/apple-app-site-association', :to => "home#apple_app_site"
 
   authenticate :admin_user do
     mount Sidekiq::Web => '/sidekiq'
