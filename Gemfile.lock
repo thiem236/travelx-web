@@ -327,7 +327,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.2)
     pundit (2.0.1)
       activesupport (>= 3.0.0)
     raabro (1.1.6)
@@ -541,7 +541,7 @@ DEPENDENCIES
   pg (~> 0.18)
   phone
   pry
-  puma (~> 3.7)
+  puma (~> 3.12)
   pundit
   rack-cors
   rails (~> 5.1.1)
